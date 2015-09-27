@@ -1,2 +1,2 @@
 # LibraryManagementSystem
-This is a easy library management system.
+This is an easy library management system.
