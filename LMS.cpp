@@ -35,8 +35,8 @@ int main()
 		{
 			Reader *p;
 			Index();
-			cout << "\t\t#¶ÁÕßµÇÂ¼#\n";
-			cout << "\n\n\t\tÇëÊäÈëÓÃ»§Ãû£º\n\t\t";
+			cout << "\t\t#è¯»è€…ç™»å½•#\n";
+			cout << "\n\n\t\tè¯·è¾“å…¥ç”¨æˆ·åï¼š\n\t\t";
 			string str;
 			bool flag = 1;
 			cin >> str;
@@ -44,7 +44,7 @@ int main()
 				if ( p->name == str || p->phoneNumber == str )
 				{
 					flag = 0;
-					cout << "\t\tÇëÊäÈëÃÜÂë£º\n\t\t";
+					cout << "\t\tè¯·è¾“å…¥å¯†ç ï¼š\n\t\t";
 					cin >> str;
 					int i = 1;
 					while ( 1 )
@@ -52,7 +52,7 @@ int main()
 						i++;
 						if ( str == p->password )
 						{
-							cout << "\n\t\tµÇÂ¼³É¹¦£¡"<< endl;
+							cout << "\n\t\tç™»å½•æˆåŠŸï¼"<< endl;
 							system("pause");
 							while ( !quit_1 )
 							{
@@ -75,14 +75,14 @@ int main()
 						{
 							if ( 4 - i )
 							{
-								cout << "ÃÜÂë´íÎó£¡Äã»¹ÓÐ" <<  4 - i 
-									<< "´Î»ú»á¡£" << endl;
-								cout << "\t\tÇëÊäÈëÃÜÂë£º\n\t\t"; 
+								cout << "å¯†ç é”™è¯¯ï¼ä½ è¿˜æœ‰" <<  4 - i 
+									<< "æ¬¡æœºä¼šã€‚" << endl;
+								cout << "\t\tè¯·è¾“å…¥å¯†ç ï¼š\n\t\t"; 
 								cin >> str;
 							}
 							else 
 							{
-								cout << "°´ÈÎÒâ¼üÍË³öÏµÍ³..." << endl;
+								cout << "æŒ‰ä»»æ„é”®é€€å‡ºç³»ç»Ÿ..." << endl;
 								getchar();
 								exit(0);
 							}
@@ -91,7 +91,7 @@ int main()
 				}
 			if ( flag )
 			{
-				cout << "ÓÃ»§²»´æÔÚ£¡";
+				cout << "ç”¨æˆ·ä¸å­˜åœ¨ï¼";
 				cin.get();cin.get();
 				continue;
 			}
@@ -99,7 +99,7 @@ int main()
 		}break;
 		case 2:
 			Index();
-			cout << "\t\t#ÓÃ»§×¢²á#\n\n\n";
+			cout << "\t\t#ç”¨æˆ·æ³¨å†Œ#\n\n\n";
 			Admin.addReader();
 			break;
 		case 3:
@@ -161,7 +161,7 @@ void Index()
 {
 	system ("cls");
 	cout << "\n\n\n\t\t\t*******************************\n";  
-	cout << "\t\t                 Í¼Êé¹ÜÀíÏµÍ³\n";  
+	cout << "\t\t                 å›¾ä¹¦ç®¡ç†ç³»ç»Ÿ\n";  
 	cout << "\t\t\t*******************************\n\n\n";  
 	for ( int i = 0; i < 80; i++)
 		cout << '-';
@@ -170,37 +170,37 @@ void Index()
 void Welcome()
 {
 	cout << "\n\n\n\t\t\t*******************************\n";  
-	cout << "\t\t             »¶Ó­½øÈëÍ¼Êé¹ÜÀíÏµÍ³\n";  
+	cout << "\t\t             æ¬¢è¿Žè¿›å…¥å›¾ä¹¦ç®¡ç†ç³»ç»Ÿ\n";  
 	cout << "\t\t\t*******************************\n\n\n";  
 	for ( int i = 0; i < 80; i++)
 		cout << '-';
 	cout << endl; 
-	cout << "\n\t\t\t¶ÁÊé£¬\n";  
-	cout << "\t\t\t\t  ÊÇÃÅ¼÷×îµÍµÄ¸ß¹óÖ®¾Ù\n\n";  
+	cout << "\n\t\t\tè¯»ä¹¦ï¼Œ\n";  
+	cout << "\t\t\t\t  æ˜¯é—¨æ§›æœ€ä½Žçš„é«˜è´µä¹‹ä¸¾\n\n";  
 	cout << "\t_______________________________"
 		 << "_______________________________\n";  
-	cout << "\t°æÈ¨ËùÓÐ\tversion: 1.0\n\t\t\t\t\t\t\t\tLudics\n\n\n";  
-	cout << "\n\n\t<°´ÈÎÒâ¼ü¼ÌÐø>" << endl;
+	cout << "\tç‰ˆæƒæ‰€æœ‰\tversion: 1.0\n\t\t\t\t\t\t\t\tLudics\n\n\n";  
+	cout << "\n\n\t<æŒ‰ä»»æ„é”®ç»§ç»­>" << endl;
 	getchar();
 }
 
 void Login()
 {
 	Index(); 
-	cout << "\t\t#µÇÂ¼#\n";
-	cout << "\t\t\t       1.µÇÂ¼"<<endl;
-	cout << "\t\t\t       2.×¢²á"<<endl;
-	cout << "\t\t\t       3.¹ÜÀíÔ±µÇÂ¼"<<endl;
-	cout << "\t\t\t       0.°²È«ÍË³öÏµÍ³"<<endl;
+	cout << "\t\t#ç™»å½•#\n";
+	cout << "\t\t\t       1.ç™»å½•"<<endl;
+	cout << "\t\t\t       2.æ³¨å†Œ"<<endl;
+	cout << "\t\t\t       3.ç®¡ç†å‘˜ç™»å½•"<<endl;
+	cout << "\t\t\t       0.å®‰å…¨é€€å‡ºç³»ç»Ÿ"<<endl;
 	cout << "\t_______________________________"
 		 << "_______________________________\n"; 
-	cout << "\n\t\t\n\t\tÇëÑ¡Ôñ£º";
+	cout << "\n\t\t\n\t\tè¯·é€‰æ‹©ï¼š";
 }
 
 void AdminLogin()
 {
 	Index();
-	cout << "\t\tÇëÊäÈë¹ÜÀíÔ±¿ÚÁî£º\n\t\t" ;
+	cout << "\t\tè¯·è¾“å…¥ç®¡ç†å‘˜å£ä»¤ï¼š\n\t\t" ;
 	string str;
 	cin >> str;
 	int i = 1;
@@ -212,13 +212,13 @@ void AdminLogin()
 		{
 			if ( 4 - i )
 			{
-				cout << "¿ÚÁî´íÎó£¡Äã»¹ÓÐ" <<  4 - i << "´Î»ú»á¡£" << endl;
-				cout << "\t\tÇëÊäÈë¹ÜÀíÔ±¿ÚÁî£º\n\t\t"; 
+				cout << "å£ä»¤é”™è¯¯ï¼ä½ è¿˜æœ‰" <<  4 - i << "æ¬¡æœºä¼šã€‚" << endl;
+				cout << "\t\tè¯·è¾“å…¥ç®¡ç†å‘˜å£ä»¤ï¼š\n\t\t"; 
 				cin >> str;
 			}
 			else 
 			{
-				cout << "°´ÈÎÒâ¼üÍË³öÏµÍ³..." << endl;
+				cout << "æŒ‰ä»»æ„é”®é€€å‡ºç³»ç»Ÿ..." << endl;
 				getchar();
 				exit(0);
 			}
@@ -228,59 +228,59 @@ void AdminLogin()
 void AdminMenu()
 {
 	Index();
-	cout << "\t\t#¹ÜÀíÔ±²Ëµ¥#\n";
-	cout << "\t\t\t       1.¶ÁÕßÐÅÏ¢Î¬»¤"<<endl;
-	cout << "\t\t\t       2.Í¼ÊéÐÅÏ¢Î¬»¤"<<endl;
-	cout << "\t\t\t       0.°²È«ÍË³öÏµÍ³"<<endl;
+	cout << "\t\t#ç®¡ç†å‘˜èœå•#\n";
+	cout << "\t\t\t       1.è¯»è€…ä¿¡æ¯ç»´æŠ¤"<<endl;
+	cout << "\t\t\t       2.å›¾ä¹¦ä¿¡æ¯ç»´æŠ¤"<<endl;
+	cout << "\t\t\t       0.å®‰å…¨é€€å‡ºç³»ç»Ÿ"<<endl;
 	cout << "\t_______________________________"
 		 << "_______________________________\n"; 
-	cout << "\n\t\t\n\t\tÇëÑ¡Ôñ£º";
+	cout << "\n\t\t\n\t\tè¯·é€‰æ‹©ï¼š";
 }
 
 void ReaderMenu()
 {
 	Index();
-	cout << "\t\t#¶ÁÕßÐÅÏ¢Î¬»¤#\n";
-	cout << "\t\t\t       1.Ìí¼Ó¶ÁÕßÐÅÏ¢"<<endl;
-	cout << "\t\t\t       2.É¾³ý¶ÁÕßÐÅÏ¢"<<endl;
-	cout << "\t\t\t       3.¼ìË÷¶ÁÕßÐÅÏ¢"<<endl;
-	cout << "\t\t\t       4.ÐÞ¸Ä¶ÁÕßÐÅÏ¢"<<endl;
-	cout << "\t\t\t       5.ÏÔÊ¾È«²¿ÐÅÏ¢"<<endl;
-	cout << "\t\t\t       6.·µ»Ø"<<endl;
-	cout << "\t\t\t       0.°²È«ÍË³öÏµÍ³"<<endl;
+	cout << "\t\t#è¯»è€…ä¿¡æ¯ç»´æŠ¤#\n";
+	cout << "\t\t\t       1.æ·»åŠ è¯»è€…ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       2.åˆ é™¤è¯»è€…ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       3.æ£€ç´¢è¯»è€…ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       4.ä¿®æ”¹è¯»è€…ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       5.æ˜¾ç¤ºå…¨éƒ¨ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       6.è¿”å›ž"<<endl;
+	cout << "\t\t\t       0.å®‰å…¨é€€å‡ºç³»ç»Ÿ"<<endl;
 	cout << "\t_______________________________"
 		 << "_______________________________\n"; 
-	cout << "\n\t\t\n\t\tÇëÑ¡Ôñ£º";
+	cout << "\n\t\t\n\t\tè¯·é€‰æ‹©ï¼š";
 }
 
 void BookMenu()
 {
 	Index();
-	cout << "\t\t#Í¼ÊéÐÅÏ¢Î¬»¤#\n";
-	cout << "\t\t\t       1.Ìí¼ÓÍ¼ÊéÐÅÏ¢"<<endl;
-	cout << "\t\t\t       2.É¾³ýÍ¼ÊéÐÅÏ¢"<<endl;
-	cout << "\t\t\t       3.¼ìË÷Í¼ÊéÐÅÏ¢"<<endl;
-	cout << "\t\t\t       4.ÐÞ¸ÄÍ¼ÊéÐÅÏ¢"<<endl;
-	cout << "\t\t\t       5.ÏÔÊ¾È«²¿ÐÅÏ¢"<<endl;
-	cout << "\t\t\t       6.·µ»Ø"<<endl;
-	cout << "\t\t\t       0.°²È«ÍË³öÏµÍ³"<<endl;
+	cout << "\t\t#å›¾ä¹¦ä¿¡æ¯ç»´æŠ¤#\n";
+	cout << "\t\t\t       1.æ·»åŠ å›¾ä¹¦ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       2.åˆ é™¤å›¾ä¹¦ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       3.æ£€ç´¢å›¾ä¹¦ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       4.ä¿®æ”¹å›¾ä¹¦ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       5.æ˜¾ç¤ºå…¨éƒ¨ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       6.è¿”å›ž"<<endl;
+	cout << "\t\t\t       0.å®‰å…¨é€€å‡ºç³»ç»Ÿ"<<endl;
 	cout << "\t_______________________________"
 		 << "_______________________________\n"; 
-	cout << "\n\t\t\n\t\tÇëÑ¡Ôñ£º";
+	cout << "\n\t\t\n\t\tè¯·é€‰æ‹©ï¼š";
 }
 
 void ReaderInterface()
 {
 	Index();
-	cout << "\t\t#¶ÁÕß²Ëµ¥#\n";
-	cout << "\t\t\t       1.½èÊé"<<endl;
-	cout << "\t\t\t       2.»¹Êé"<<endl;
-	cout << "\t\t\t       3.¼ìË÷Í¼ÊéÐÅÏ¢"<<endl;
-	cout << "\t\t\t       4.²é¿´¸öÈËÐÅÏ¢"<<endl;
-	cout << "\t\t\t       0.°²È«ÍË³öÏµÍ³"<<endl;
+	cout << "\t\t#è¯»è€…èœå•#\n";
+	cout << "\t\t\t       1.å€Ÿä¹¦"<<endl;
+	cout << "\t\t\t       2.è¿˜ä¹¦"<<endl;
+	cout << "\t\t\t       3.æ£€ç´¢å›¾ä¹¦ä¿¡æ¯"<<endl;
+	cout << "\t\t\t       4.æŸ¥çœ‹ä¸ªäººä¿¡æ¯"<<endl;
+	cout << "\t\t\t       0.å®‰å…¨é€€å‡ºç³»ç»Ÿ"<<endl;
 	cout << "\t_______________________________"
 		 << "_______________________________\n"; 
-	cout << "\n\t\t\n\t\tÇëÑ¡Ôñ£º";
+	cout << "\n\t\t\n\t\tè¯·é€‰æ‹©ï¼š";
 }
 
 

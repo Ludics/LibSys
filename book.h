@@ -9,15 +9,15 @@ using namespace std;
 class Book
 {
 public:
-	string bookID;			//Êé¼®±àºÅ
-	string bookName;		//ÊéÃû
-	string writer;			//×÷Õß
-	string ISBN;			//Êé¼®ISBN±àÂë
-	string press;			//³ö°æÉç
-	string publishYear;		//³ö°æÄê·İ
-	int totalInventory;		//×Ü¿â´æ
-	int currentInventory;	//µ±Ç°¿â´æ
-	Book *Next;				//Á´±í½áµãÖ¸ÕëÓò
+	string bookID;			//ä¹¦ç±ç¼–å·
+	string bookName;		//ä¹¦å
+	string writer;			//ä½œè€…
+	string ISBN;			//ä¹¦ç±ISBNç¼–ç 
+	string press;			//å‡ºç‰ˆç¤¾
+	string publishYear;		//å‡ºç‰ˆå¹´ä»½
+	int totalInventory;		//æ€»åº“å­˜
+	int currentInventory;	//å½“å‰åº“å­˜
+	Book *Next;				//é“¾è¡¨ç»“ç‚¹æŒ‡é’ˆåŸŸ
 	Book();
 	void bookFileRead(ifstream &in);
 	void bookInfoDisplay();
@@ -45,10 +45,10 @@ void Book::bookFileRead( ifstream &in )
 void Book::bookInfoDisplay()
 {
 	cout << "\t\t" << setiosflags(ios_base::left) << setw(20)
-		 << "Êé¼®±àºÅ£º" << bookID << "\n" << "\t\t" << setw(20) << "ÊéÃû£º" << bookName << "\n"
-		 << "\t\t" << setw(20) << "×÷Õß£º" << writer<< "\n"<< "\t\t" << setw(20) << "ISBN£º" << ISBN << "\n"
-		 << "\t\t" << setw(20) << "³ö°æÉç£º" << press << "\n" << "\t\t" << setw(20) << "³ö°æÄê·İ£º" << publishYear
-		 << "\n" << "\t\t" << setw(20) << "×Ü¿â´æ£º" << totalInventory << "\n" << "\t\t" << setw(20) << "µ±Ç°¿â´æ£º" 
+		 << "ä¹¦ç±ç¼–å·ï¼š" << bookID << "\n" << "\t\t" << setw(20) << "ä¹¦åï¼š" << bookName << "\n"
+		 << "\t\t" << setw(20) << "ä½œè€…ï¼š" << writer<< "\n"<< "\t\t" << setw(20) << "ISBNï¼š" << ISBN << "\n"
+		 << "\t\t" << setw(20) << "å‡ºç‰ˆç¤¾ï¼š" << press << "\n" << "\t\t" << setw(20) << "å‡ºç‰ˆå¹´ä»½ï¼š" << publishYear
+		 << "\n" << "\t\t" << setw(20) << "æ€»åº“å­˜ï¼š" << totalInventory << "\n" << "\t\t" << setw(20) << "å½“å‰åº“å­˜ï¼š" 
 		 << currentInventory << "\n" << resetiosflags(ios_base::left)<< endl;
 }
 #endif		//_BOOK_H_

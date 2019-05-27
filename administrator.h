@@ -11,19 +11,19 @@ class Administrator:
 {
 public:
 	~Administrator()	{}
-	void addBook();			//Ìí¼ÓÍ¼ÊéĞÅÏ¢
-	void deleteBook();		//É¾³ıÍ¼ÊéĞÅÏ¢
-	void modifyBook();		//ĞŞ¸ÄÍ¼ÊéĞÅÏ¢
-	void addReader();		//Ìí¼Ó¶ÁÕßĞÅÏ¢
-	void deleteReader();	//É¾³ı¶ÁÕßĞÅÏ¢
-	void displayReaders();	//ÏÔÊ¾È«²¿¶ÁÕßĞÅÏ¢
-	void seekReader();		//¼ìË÷¶ÁÕßĞÅÏ¢
-	void modifyReader();	//ĞŞ¸Ä¶ÁÕßĞÅÏ¢
+	void addBook();			//æ·»åŠ å›¾ä¹¦ä¿¡æ¯
+	void deleteBook();		//åˆ é™¤å›¾ä¹¦ä¿¡æ¯
+	void modifyBook();		//ä¿®æ”¹å›¾ä¹¦ä¿¡æ¯
+	void addReader();		//æ·»åŠ è¯»è€…ä¿¡æ¯
+	void deleteReader();	//åˆ é™¤è¯»è€…ä¿¡æ¯
+	void displayReaders();	//æ˜¾ç¤ºå…¨éƒ¨è¯»è€…ä¿¡æ¯
+	void seekReader();		//æ£€ç´¢è¯»è€…ä¿¡æ¯
+	void modifyReader();	//ä¿®æ”¹è¯»è€…ä¿¡æ¯
 };
 
-void Administrator::addBook()		//Ìí¼ÓÍ¼ÊéĞÅÏ¢
+void Administrator::addBook()		//æ·»åŠ å›¾ä¹¦ä¿¡æ¯
 {
-	cout << "ÇëÊäÈëÍ¼ÊéµÄISBN±àÂë£º\n\t\t";
+	cout << "è¯·è¾“å…¥å›¾ä¹¦çš„ISBNç¼–ç ï¼š\n\t\t";
 	string str;
 	cin >> str;
 	int flag = 1;
@@ -32,73 +32,73 @@ void Administrator::addBook()		//Ìí¼ÓÍ¼ÊéĞÅÏ¢
 		if ( p->ISBN == str )
 		{
 			flag = 0;
-			cout << "Í¼ÊéÒÑ´æÔÚ£¡" << endl;
+			cout << "å›¾ä¹¦å·²å­˜åœ¨ï¼" << endl;
 			p->bookInfoDisplay();
-			cout << "È·ÈÏÌí¼Ó¿â´æÂğ£¿(y\\n)" <<endl;
+			cout << "ç¡®è®¤æ·»åŠ åº“å­˜å—ï¼Ÿ(y\\n)" <<endl;
 			char c;
 			cin >> c;
 			if ( c == 'y' || c == 'Y')
 			{
-				cout << "ÇëÊäÈëÌí¼ÓÊıÁ¿£º";
+				cout << "è¯·è¾“å…¥æ·»åŠ æ•°é‡ï¼š";
 				int i;
 				cin >> i;
 				p->currentInventory += i;
 				p->totalInventory +=i;
-				cout << "Ìí¼Ó¿â´æ³É¹¦£¡°´»Ø³µ¼ü¼ÌĞø..." << endl;
+				cout << "æ·»åŠ åº“å­˜æˆåŠŸï¼æŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 			}
 			else
-				cout << "Î´Ìí¼Ó¿â´æ£¡°´»Ø³µ¼ü¼ÌĞø..." << endl;
+				cout << "æœªæ·»åŠ åº“å­˜ï¼æŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 		}
 	}
 	if ( flag )
 	{
 		bEnd->ISBN = str;
-		cout << "ÕâÊÇÒ»ÖÖÊé¿âÖĞÃ»ÓĞµÄÊé£¡Çë°´Í¼Êé·ÖÀà·¨ÎªÆä±àºÅ£º\n\t\t";
+		cout << "è¿™æ˜¯ä¸€ç§ä¹¦åº“ä¸­æ²¡æœ‰çš„ä¹¦ï¼è¯·æŒ‰å›¾ä¹¦åˆ†ç±»æ³•ä¸ºå…¶ç¼–å·ï¼š\n\t\t";
 		cin >> str;
 		while ( flag )
 		{
 			for (Book *p = bHead->Next; p != bEnd; p = p->Next )
 				if ( p->bookID == str )
 				{
-					cout << "´Ë±àºÅÒÑ´æÔÚ£¬ÇëÖØĞÂ±àºÅ£º";
+					cout << "æ­¤ç¼–å·å·²å­˜åœ¨ï¼Œè¯·é‡æ–°ç¼–å·ï¼š";
 					cin >> str;
 					continue;
 				}
 			flag = 0;
 		}
 		bEnd->bookID = str;
-		cout << "Çë°´ÌáÊ¾ÊäÈëÍ¼ÊéĞÅÏ¢¡£(¿Õ¸ñÇëÓÃ\"_\")" << endl;
-		cout << "ÊéÃû£º";
+		cout << "è¯·æŒ‰æç¤ºè¾“å…¥å›¾ä¹¦ä¿¡æ¯ã€‚(ç©ºæ ¼è¯·ç”¨\"_\")" << endl;
+		cout << "ä¹¦åï¼š";
 		cin >> bEnd->bookName;
-		cout << "×÷Õß£º";
+		cout << "ä½œè€…ï¼š";
 		cin >> bEnd->writer;
-		cout << "³ö°æÉç£º";
+		cout << "å‡ºç‰ˆç¤¾ï¼š";
 		cin >> bEnd->press;
-		cout << "³ö°æÄê·İ£º";
+		cout << "å‡ºç‰ˆå¹´ä»½ï¼š";
 		cin >> bEnd->publishYear;
 		bEnd->totalInventory = bEnd->currentInventory = 1;
-		cout << "ÇëÊäÈëÌí¼ÓÊıÁ¿£º";
+		cout << "è¯·è¾“å…¥æ·»åŠ æ•°é‡ï¼š";
 		int i;
 		cin >> i;
 		i --;
 		bEnd->currentInventory += i;
 		bEnd->totalInventory += i;
-		cout << "Í¼ÊéĞÅÏ¢Ìí¼ÓÍê±Ï£¡" << endl;
+		cout << "å›¾ä¹¦ä¿¡æ¯æ·»åŠ å®Œæ¯•ï¼" << endl;
 		bEnd->bookInfoDisplay();
 		bEnd->Next = new Book;
 		bEnd = bEnd->Next;
-		cout << "°´»Ø³µ¼ü¼ÌĞø..." << endl;
+		cout << "æŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 	}
 	saveBooks();
 	cin.get();cin.get();
 }
-void Administrator::deleteBook()		//É¾³ıÍ¼ÊéĞÅÏ¢
+void Administrator::deleteBook()		//åˆ é™¤å›¾ä¹¦ä¿¡æ¯
 {
 	int flag = 0;
-	cout << "ÇëÊäÈëÒªÉ¾³ıÍ¼ÊéµÄÊéÃû»ò×÷Õß£º";
+	cout << "è¯·è¾“å…¥è¦åˆ é™¤å›¾ä¹¦çš„ä¹¦åæˆ–ä½œè€…ï¼š";
 	string str;
 	cin >> str;
-	cout << "¼ìË÷µ½µÄÊé¼®ĞÅÏ¢ÈçÏÂ£º" << endl;
+	cout << "æ£€ç´¢åˆ°çš„ä¹¦ç±ä¿¡æ¯å¦‚ä¸‹ï¼š" << endl;
 	for (Book *p = bHead->Next; p != bEnd; p = p->Next )
 	{
 		if ( p->writer == str || p->bookName == str )
@@ -112,7 +112,7 @@ void Administrator::deleteBook()		//É¾³ıÍ¼ÊéĞÅÏ¢
 	if ( flag )
 	{
 		flag = 1;
-		cout << "É¾³ıÇëÊäÈë¼ìË÷µ½µÄÍ¼Êé±àºÅ£º";
+		cout << "åˆ é™¤è¯·è¾“å…¥æ£€ç´¢åˆ°çš„å›¾ä¹¦ç¼–å·ï¼š";
 		cin >> str;
 		for (Book *p = bHead; p->Next != bEnd; p = p->Next )
 		{
@@ -121,7 +121,7 @@ void Administrator::deleteBook()		//É¾³ıÍ¼ÊéĞÅÏ¢
 				flag = 0;
 				if ( p->currentInventory == p->totalInventory )
 				{
-					cout << "È·ÈÏÉ¾³ıÂğ£¿(y\\n)" << endl;
+					cout << "ç¡®è®¤åˆ é™¤å—ï¼Ÿ(y\\n)" << endl;
 					char c;
 					cin >> c;
 					if ( c == 'y' || c == 'Y' )
@@ -129,33 +129,33 @@ void Administrator::deleteBook()		//É¾³ıÍ¼ÊéĞÅÏ¢
 						Book *temp = p->Next;
 						p->Next = p->Next->Next;
 						delete temp;
-						cout << "\nĞÅÏ¢É¾³ı³É¹¦£¡°´»Ø³µ¼ü¼ÌĞø..." << endl;
+						cout << "\nä¿¡æ¯åˆ é™¤æˆåŠŸï¼æŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 						saveBooks();
 						cin.get();cin.get();
 						return;
 					}
 					else
-						cout << "\nÍ¼ÊéĞÅÏ¢Î´É¾³ı£¡°´»Ø³µ¼ü¼ÌĞø..." << endl;
+						cout << "\nå›¾ä¹¦ä¿¡æ¯æœªåˆ é™¤ï¼æŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 				}
 				else
-					cout << "»¹ÓĞÍ¼ÊéÃ»ÓĞ¹é»¹£¬ÎŞ·¨É¾³ıĞÅÏ¢¡£°´»Ø³µ¼ü¼ÌĞø..." << endl;
+					cout << "è¿˜æœ‰å›¾ä¹¦æ²¡æœ‰å½’è¿˜ï¼Œæ— æ³•åˆ é™¤ä¿¡æ¯ã€‚æŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 			}
 		}
 		if ( flag )
-			cout << "Í¼Êé±àºÅÊäÈë²»ÕıÈ·£¬ĞÅÏ¢Î´É¾³ı£¡°´»Ø³µ¼ü¼ÌĞø..." << endl;
+			cout << "å›¾ä¹¦ç¼–å·è¾“å…¥ä¸æ­£ç¡®ï¼Œä¿¡æ¯æœªåˆ é™¤ï¼æŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 	}
 	else
-		cout << "Î´¼ìË÷µ½Ïà¹ØĞÅÏ¢£¬°´»Ø³µ¼ü¼ÌĞø..." << endl;
+		cout << "æœªæ£€ç´¢åˆ°ç›¸å…³ä¿¡æ¯ï¼ŒæŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 	cin.get();cin.get();
 }
-//ĞŞ¸ÄÍ¼ÊéĞÅÏ¢
+//ä¿®æ”¹å›¾ä¹¦ä¿¡æ¯
 void Administrator::modifyBook()
 {
 	int flag = 0;
-	cout << "ÇëÊäÈëÒªĞŞ¸ÄµÄÍ¼ÊéµÄÊéÃû»ò×÷Õß£º";
+	cout << "è¯·è¾“å…¥è¦ä¿®æ”¹çš„å›¾ä¹¦çš„ä¹¦åæˆ–ä½œè€…ï¼š";
 	string str;
 	cin >> str;
-	cout << "¼ìË÷µ½µÄÊé¼®ĞÅÏ¢ÈçÏÂ£º" << endl;
+	cout << "æ£€ç´¢åˆ°çš„ä¹¦ç±ä¿¡æ¯å¦‚ä¸‹ï¼š" << endl;
 	for (Book *p = bHead->Next; p != bEnd; p = p->Next )
 	{
 		if ( p->writer == str || p->bookName == str )
@@ -163,30 +163,30 @@ void Administrator::modifyBook()
 			flag++;
 			p->bookInfoDisplay();
 			cout << endl;
-			cout << "\t#ĞŞ¸Ä²Ëµ¥#\n\t\t1.ĞŞ¸ÄÊéÃû\n\t\t2.ĞŞ¸Ä×÷Õß\n\t\t3.ĞŞ¸ÄISBN" 
-				 << "\n\t\t4.ĞŞ¸Ä³ö°æÉç\n\t\t5.ĞŞ¸Ä³ö°æÄê·İ\n\t\t6.Ìí¼Ó¿â´æ\n\t\t7.ĞŞ¸Ä±àºÅ"<< endl;
-			cout << "ÇëÊäÈëĞòºÅÑ¡Ôñ£º";
+			cout << "\t#ä¿®æ”¹èœå•#\n\t\t1.ä¿®æ”¹ä¹¦å\n\t\t2.ä¿®æ”¹ä½œè€…\n\t\t3.ä¿®æ”¹ISBN" 
+				 << "\n\t\t4.ä¿®æ”¹å‡ºç‰ˆç¤¾\n\t\t5.ä¿®æ”¹å‡ºç‰ˆå¹´ä»½\n\t\t6.æ·»åŠ åº“å­˜\n\t\t7.ä¿®æ”¹ç¼–å·"<< endl;
+			cout << "è¯·è¾“å…¥åºå·é€‰æ‹©ï¼š";
 			int order;
 			cin >> order;
 			switch( order )
 			{
 			default: return; break;
 			case 1:
-				cout << "ÇëÊäÈëÊéÃû:";
+				cout << "è¯·è¾“å…¥ä¹¦å:";
 				cin >> p->bookName;
-				cout << "ĞŞ¸Ä³É¹¦£¡ĞŞ¸ÄºóĞÅÏ¢Îª£º" << endl;
+				cout << "ä¿®æ”¹æˆåŠŸï¼ä¿®æ”¹åä¿¡æ¯ä¸ºï¼š" << endl;
 				p->bookInfoDisplay();
 				break;
 			case 2:
-				cout << "ÇëÊäÈë×÷Õß:";
+				cout << "è¯·è¾“å…¥ä½œè€…:";
 				cin >> p->writer;
-				cout << "ĞŞ¸Ä³É¹¦£¡ĞŞ¸ÄºóĞÅÏ¢Îª£º" << endl;
+				cout << "ä¿®æ”¹æˆåŠŸï¼ä¿®æ”¹åä¿¡æ¯ä¸ºï¼š" << endl;
 				p->bookInfoDisplay();
 				break;
 			case 3:
 				{
 					string str;
-					cout << "ÇëÊäÈëISBN£º";
+					cout << "è¯·è¾“å…¥ISBNï¼š";
 					cin >> str;
 					int flag = 1;
 					int flag1 = 1;
@@ -197,9 +197,9 @@ void Administrator::modifyBook()
 							if ( p1->ISBN == str )
 							{
 								flag = 0;
-								cout << "ISBNÒÑ´æÔÚ£¡" << endl;
+								cout << "ISBNå·²å­˜åœ¨ï¼" << endl;
 								p1->bookInfoDisplay();
-								cout << "ÇëÖØĞÂÊäÈëISBN£º";
+								cout << "è¯·é‡æ–°è¾“å…¥ISBNï¼š";
 								cin >> str;
 								continue;
 							}
@@ -208,36 +208,36 @@ void Administrator::modifyBook()
 					}
 					if ( flag )
 					{
-						cout << "ĞŞ¸Ä³É¹¦£¡ĞŞ¸ÄºóĞÅÏ¢Îª£º";
+						cout << "ä¿®æ”¹æˆåŠŸï¼ä¿®æ”¹åä¿¡æ¯ä¸ºï¼š";
 						p->bookInfoDisplay();
 					}
 				} break;
 			case 4:
-				cout << "ÇëÊäÈë³ö°æÉç:";
+				cout << "è¯·è¾“å…¥å‡ºç‰ˆç¤¾:";
 				cin >> p->press;
-				cout << "ĞŞ¸Ä³É¹¦£¡ĞŞ¸ÄºóĞÅÏ¢Îª£º" << endl;
+				cout << "ä¿®æ”¹æˆåŠŸï¼ä¿®æ”¹åä¿¡æ¯ä¸ºï¼š" << endl;
 				p->bookInfoDisplay();
 				break;
 			case 5:
-				cout << "ÇëÊäÈë³ö°æÄê·İ:";
+				cout << "è¯·è¾“å…¥å‡ºç‰ˆå¹´ä»½:";
 				cin >> p->publishYear;
-				cout << "ĞŞ¸Ä³É¹¦£¡ĞŞ¸ÄºóĞÅÏ¢Îª£º" << endl;
+				cout << "ä¿®æ”¹æˆåŠŸï¼ä¿®æ”¹åä¿¡æ¯ä¸ºï¼š" << endl;
 				p->bookInfoDisplay();
 				break;
 			case 6:
 			{
-				cout << "ÇëÊäÈëÌí¼ÓÊıÄ¿£º";
+				cout << "è¯·è¾“å…¥æ·»åŠ æ•°ç›®ï¼š";
 				int i;
 				cin >> i;
 				p->currentInventory += i;
 				p->totalInventory += i;
-				cout << "ĞŞ¸Ä³É¹¦£¡ĞŞ¸ÄºóĞÅÏ¢Îª£º" << endl;
+				cout << "ä¿®æ”¹æˆåŠŸï¼ä¿®æ”¹åä¿¡æ¯ä¸ºï¼š" << endl;
 				p->bookInfoDisplay();	
 			} break;
 			case 7:
 				{
 					string str;
-					cout << "ÇëÊäÈë±àºÅ£º";
+					cout << "è¯·è¾“å…¥ç¼–å·ï¼š";
 					cin >> str;
 					int flag = 1;
 					int flag1 = 1;
@@ -248,9 +248,9 @@ void Administrator::modifyBook()
 							if ( p1->bookID == str )
 							{
 								flag = 0;
-								cout << "±àºÅÒÑ´æÔÚ£¡" << endl;
+								cout << "ç¼–å·å·²å­˜åœ¨ï¼" << endl;
 								p1->bookInfoDisplay();
-								cout << "ÇëÖØĞÂÊäÈë±àºÅ£º";
+								cout << "è¯·é‡æ–°è¾“å…¥ç¼–å·ï¼š";
 								cin >> str;
 								continue;
 							}
@@ -260,7 +260,7 @@ void Administrator::modifyBook()
 					if ( flag )
 					{
 						p->bookID = str;
-						cout << "ĞŞ¸Ä³É¹¦£¡ĞŞ¸ÄºóĞÅÏ¢Îª£º" << endl;
+						cout << "ä¿®æ”¹æˆåŠŸï¼ä¿®æ”¹åä¿¡æ¯ä¸ºï¼š" << endl;
 						p->bookInfoDisplay();
 					}
 				} break;
@@ -268,14 +268,14 @@ void Administrator::modifyBook()
 		}
 	}
 	if ( !flag )
-		cout << "Î´¼ìË÷µ½Ïà¹ØĞÅÏ¢¡£" << endl;
+		cout << "æœªæ£€ç´¢åˆ°ç›¸å…³ä¿¡æ¯ã€‚" << endl;
 	saveBooks();
 	cin.get();cin.get();
 }
 
-void Administrator::addReader()		//Ìí¼Ó¶ÁÕßĞÅÏ¢
+void Administrator::addReader()		//æ·»åŠ è¯»è€…ä¿¡æ¯
 {
-	cout << "ÇëÊäÈëÓÃ»§Ãû(³¤¶È²»´óÓÚ14¸ö×Ö·û)£º";
+	cout << "è¯·è¾“å…¥ç”¨æˆ·å(é•¿åº¦ä¸å¤§äº14ä¸ªå­—ç¬¦)ï¼š";
 	string str;
 	cin >> str;
 	while(1)
@@ -288,7 +288,7 @@ void Administrator::addReader()		//Ìí¼Ó¶ÁÕßĞÅÏ¢
 				if ( p->name == str )
 				{
 					flag = 0;
-					cout << "ÓÃ»§ÃûÒÑ±»Ê¹ÓÃ£¬ÇëÖØĞÂÊäÈë£º";
+					cout << "ç”¨æˆ·åå·²è¢«ä½¿ç”¨ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š";
 					cin >> str;
 				}
 			}
@@ -296,25 +296,25 @@ void Administrator::addReader()		//Ìí¼Ó¶ÁÕßĞÅÏ¢
 		}
 		else
 		{
-			cout << "ÓÃ»§Ãû³¤¶È³¬¹ı14¸ö×Ö·û£¬ÇëÖØĞÂÊäÈë£º";
+			cout << "ç”¨æˆ·åé•¿åº¦è¶…è¿‡14ä¸ªå­—ç¬¦ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š";
 			cin >> str;
 		}
 	}
 	rEnd->name = str;
-	cout << "ÇëÊäÈëÃÜÂë£º";
+	cout << "è¯·è¾“å…¥å¯†ç ï¼š";
 	cin >> rEnd->password;
-	cout << "ÇëÊäÈëÊÖ»úºÅÂë£º";
+	cout << "è¯·è¾“å…¥æ‰‹æœºå·ç ï¼š";
 	cin >> rEnd->phoneNumber;
 	rEnd->Next = new Reader;
 	rEnd = rEnd->Next;
-	cout << "ĞÂ¶ÁÕßÓÃ»§´´½¨³É¹¦£¡°´»Ø³µ¼ü¼ÌĞø..." << endl;
+	cout << "æ–°è¯»è€…ç”¨æˆ·åˆ›å»ºæˆåŠŸï¼æŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 	saveReaders();
 	cin.get();cin.get();
 }
-void Administrator::deleteReader()			//É¾³ı¶ÁÕßĞÅÏ¢
+void Administrator::deleteReader()			//åˆ é™¤è¯»è€…ä¿¡æ¯
 {
 	bool flag = 1;
-	cout << "ÇëÊäÈëËùÒªÉ¾³ıµÄ¶ÁÕßµÄÓÃ»§Ãû£º";
+	cout << "è¯·è¾“å…¥æ‰€è¦åˆ é™¤çš„è¯»è€…çš„ç”¨æˆ·åï¼š";
 	string str;
 	cin >> str;
 	for ( Reader *p = rHead; p->Next != rEnd; p = p->Next )
@@ -322,11 +322,11 @@ void Administrator::deleteReader()			//É¾³ı¶ÁÕßĞÅÏ¢
 		if ( p->Next->name == str )
 		{
 			flag = 0;
-			cout << "¼ìË÷µ½µÄĞÅÏ¢Îª£º" << endl;
+			cout << "æ£€ç´¢åˆ°çš„ä¿¡æ¯ä¸ºï¼š" << endl;
 			p->Next->readerInfoDisplay();
 			if ( p->borrowNumber != 0 )
-				cout << "\n´Ë¶ÁÕß»¹ÓĞÍ¼ÊéÎ´¹é»¹£¡";
-			cout << "\nÈ·ÈÏÉ¾³ıÂğ£¿(y\\n)" << endl;
+				cout << "\næ­¤è¯»è€…è¿˜æœ‰å›¾ä¹¦æœªå½’è¿˜ï¼";
+			cout << "\nç¡®è®¤åˆ é™¤å—ï¼Ÿ(y\\n)" << endl;
 			char c;
 			cin >> c;
 			if ( c == 'y' || c == 'Y' )
@@ -335,7 +335,7 @@ void Administrator::deleteReader()			//É¾³ı¶ÁÕßĞÅÏ¢
 				temp = p->Next;
 				p->Next = p->Next->Next;
 				delete temp;
-				cout << "É¾³ı³É¹¦£¡" << endl;
+				cout << "åˆ é™¤æˆåŠŸï¼" << endl;
 				saveReaders();
 				cin.get();cin.get();
 				return;
@@ -343,16 +343,16 @@ void Administrator::deleteReader()			//É¾³ı¶ÁÕßĞÅÏ¢
 		}
 	}
 	if ( flag )
-		cout << "Î´¼ìË÷µ½Ïà¹ØĞÅÏ¢¡£" << endl;
+		cout << "æœªæ£€ç´¢åˆ°ç›¸å…³ä¿¡æ¯ã€‚" << endl;
 	saveReaders();
 	cin.get();cin.get();
 }
-void Administrator::displayReaders()	//ÏÔÊ¾È«²¿¶ÁÕßĞÅÏ¢
+void Administrator::displayReaders()	//æ˜¾ç¤ºå…¨éƒ¨è¯»è€…ä¿¡æ¯
 {
 	int i = 0;
 	for ( Reader *p = rHead->Next; p != rEnd; p = p->Next )
 		i++;
-	cout << "µ±Ç°¹²ÓĞ¶ÁÕß¼ÇÂ¼" << i << "Ìõ" << endl;
+	cout << "å½“å‰å…±æœ‰è¯»è€…è®°å½•" << i << "æ¡" << endl;
 	i = 0;
 	for ( Reader *p = rHead->Next; p != rEnd; p = p->Next )
 	{
@@ -360,17 +360,17 @@ void Administrator::displayReaders()	//ÏÔÊ¾È«²¿¶ÁÕßĞÅÏ¢
 		cout << "\t" << i << "." << endl;
 		p->readerInfoDisplay();
 	}
-	cout << "È«²¿¶ÁÕßĞÅÏ¢ÏÔÊ¾Íê±Ï£¬°´»Ø³µ¼ü¼ÌĞø..." << endl;
+	cout << "å…¨éƒ¨è¯»è€…ä¿¡æ¯æ˜¾ç¤ºå®Œæ¯•ï¼ŒæŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 	cin.get();cin.get();
 }
 
-void Administrator::seekReader()	//¼ìË÷¶ÁÕßĞÅÏ¢
+void Administrator::seekReader()	//æ£€ç´¢è¯»è€…ä¿¡æ¯
 {
 	int flag = 0;
-	cout << "ÇëÊäÈëÒª¼ìË÷µÄ¶ÁÕßµÄÓÃ»§Ãû£º";
+	cout << "è¯·è¾“å…¥è¦æ£€ç´¢çš„è¯»è€…çš„ç”¨æˆ·åï¼š";
 	string str;
 	cin >> str;
-	cout << "¼ìË÷µ½µÄÓÃ»§ĞÅÏ¢ÈçÏÂ£º" << endl;
+	cout << "æ£€ç´¢åˆ°çš„ç”¨æˆ·ä¿¡æ¯å¦‚ä¸‹ï¼š" << endl;
 	for (Reader *p = rHead->Next; p != rEnd; p = p->Next )
 	{
 		if ( p->name == str )
@@ -382,16 +382,16 @@ void Administrator::seekReader()	//¼ìË÷¶ÁÕßĞÅÏ¢
 		}
 	}
 	if ( !flag )
-		cout << "Î´¼ìË÷µ½Ïà¹ØĞÅÏ¢¡£" << endl;
+		cout << "æœªæ£€ç´¢åˆ°ç›¸å…³ä¿¡æ¯ã€‚" << endl;
 	cin.get();cin.get();
 }
-void Administrator::modifyReader()	//ĞŞ¸Ä¶ÁÕßĞÅÏ¢
+void Administrator::modifyReader()	//ä¿®æ”¹è¯»è€…ä¿¡æ¯
 {
 	int flag = 0;
-	cout << "ÇëÊäÈëÒªĞŞ¸ÄµÄ¶ÁÕßµÄÓÃ»§Ãû£º";
+	cout << "è¯·è¾“å…¥è¦ä¿®æ”¹çš„è¯»è€…çš„ç”¨æˆ·åï¼š";
 	string str;
 	cin >> str;
-	cout << "¼ìË÷µ½µÄÓÃ»§ĞÅÏ¢ÈçÏÂ£º" << endl;
+	cout << "æ£€ç´¢åˆ°çš„ç”¨æˆ·ä¿¡æ¯å¦‚ä¸‹ï¼š" << endl;
 	for (Reader *p = rHead->Next; p != rEnd; p = p->Next )
 	{
 		if ( p->name == str )
@@ -399,15 +399,15 @@ void Administrator::modifyReader()	//ĞŞ¸Ä¶ÁÕßĞÅÏ¢
 			flag++;
 			p->readerInfoDisplay();
 			cout << endl;
-			cout << "\t#ĞŞ¸Ä²Ëµ¥#\n\t\t1.ĞŞ¸ÄÓÃ»§Ãû\n\t\t2.ĞŞ¸ÄÃÜÂë\n\t\t3.ĞŞ¸ÄÊÖ»úºÅÂë" << endl;
-			cout << "ÇëÊäÈëĞòºÅÑ¡Ôñ£º";
+			cout << "\t#ä¿®æ”¹èœå•#\n\t\t1.ä¿®æ”¹ç”¨æˆ·å\n\t\t2.ä¿®æ”¹å¯†ç \n\t\t3.ä¿®æ”¹æ‰‹æœºå·ç " << endl;
+			cout << "è¯·è¾“å…¥åºå·é€‰æ‹©ï¼š";
 			int order;
 			cin >> order;
 			switch( order )
 			{
 			case 1:
 				{
-					cout << "ÇëÊäÈëÓÃ»§Ãû(³¤¶È²»´óÓÚ14¸ö×Ö·û)£º";
+					cout << "è¯·è¾“å…¥ç”¨æˆ·å(é•¿åº¦ä¸å¤§äº14ä¸ªå­—ç¬¦)ï¼š";
 					cin >> str;
 					while(1)
 					{
@@ -418,7 +418,7 @@ void Administrator::modifyReader()	//ĞŞ¸Ä¶ÁÕßĞÅÏ¢
 							{
 								if ( p->name == str )
 								{
-									cout << "ÓÃ»§ÃûÒÑ±»Ê¹ÓÃ£¬ÇëÖØĞÂÊäÈë£º";
+									cout << "ç”¨æˆ·åå·²è¢«ä½¿ç”¨ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š";
 									cin >> str;
 								}
 							}
@@ -426,27 +426,27 @@ void Administrator::modifyReader()	//ĞŞ¸Ä¶ÁÕßĞÅÏ¢
 						}
 						else
 						{
-							cout << "ÓÃ»§Ãû³¤¶È³¬¹ı14¸ö×Ö·û£¬ÇëÖØĞÂÊäÈë£º";
+							cout << "ç”¨æˆ·åé•¿åº¦è¶…è¿‡14ä¸ªå­—ç¬¦ï¼Œè¯·é‡æ–°è¾“å…¥ï¼š";
 							cin >> str;
 						}
 					}
 					p->name = str;
 				}break;
 			case 2:
-				cout << "ÇëÊäÈëÃÜÂë£º";
+				cout << "è¯·è¾“å…¥å¯†ç ï¼š";
 				cin >> p->password;
 				break;
 			case 3:
-				cout << "ÇëÊäÈëÊÖ»úºÅÂë£º";
+				cout << "è¯·è¾“å…¥æ‰‹æœºå·ç ï¼š";
 				cin >> p->phoneNumber;
 				break;
 			default:
-				cout << "°´»Ø³µ¼ü¼ÌĞø..." << endl;
+				cout << "æŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 			}
 		}
 	}
 	if ( !flag )
-		cout << "Î´¼ìË÷µ½Ïà¹ØĞÅÏ¢¡£" << endl;
+		cout << "æœªæ£€ç´¢åˆ°ç›¸å…³ä¿¡æ¯ã€‚" << endl;
 	saveReaders();
 	cin.get();cin.get();
 }

@@ -7,24 +7,24 @@
 #include<iomanip>
 #include"book_data.h"
 using namespace std;
-const int MaxBor = 5;		//Ã¿ÈË×î¶à½èÔÄÊıÁ¿ÎªÎå±¾
+const int MaxBor = 5;		//æ¯äººæœ€å¤šå€Ÿé˜…æ•°é‡ä¸ºäº”æœ¬
 
 class Reader
 {
 public:
-	string name;				//ÓÃ»§Ãû
-	string phoneNumber;			//ÊÖ»úºÅ
-	string password;			//ÃÜÂë
-	string bookID[MaxBor];		//Ëù½èÍ¼Êé±àºÅ
-	string bookName[MaxBor];	//Ëù½èÍ¼ÊéÊéÃû
-	int borrowNumber;			//½èÊéÊıÁ¿
-	Reader *Next;				//Á´±í½áµãÖ¸ÕëÓò
-	Reader();					//¹¹Ôìº¯Êı
-	Reader(Reader &reader);		//¸´ÖÆ¹¹Ôìº¯Êı
-	void readerInfoDisplay();	//ÏÔÊ¾ĞÅÏ¢
-	void readerFileRead();		//¶ÁÈ¡ĞÅÏ¢
+	string name;				//ç”¨æˆ·å
+	string phoneNumber;			//æ‰‹æœºå·
+	string password;			//å¯†ç 
+	string bookID[MaxBor];		//æ‰€å€Ÿå›¾ä¹¦ç¼–å·
+	string bookName[MaxBor];	//æ‰€å€Ÿå›¾ä¹¦ä¹¦å
+	int borrowNumber;			//å€Ÿä¹¦æ•°é‡
+	Reader *Next;				//é“¾è¡¨ç»“ç‚¹æŒ‡é’ˆåŸŸ
+	Reader();					//æ„é€ å‡½æ•°
+	Reader(Reader &reader);		//å¤åˆ¶æ„é€ å‡½æ•°
+	void readerInfoDisplay();	//æ˜¾ç¤ºä¿¡æ¯
+	void readerFileRead();		//è¯»å–ä¿¡æ¯
 };
-//ReaderÀà¹¹Ôìº¯Êı
+//Readerç±»æ„é€ å‡½æ•°
 Reader::Reader()
 {
 	name = '\0';
@@ -37,7 +37,7 @@ Reader::Reader()
 	borrowNumber = 0;
 	Next = NULL;
 }
-//ReaderÀà¸´ÖÆ¹¹Ôìº¯Êı
+//Readerç±»å¤åˆ¶æ„é€ å‡½æ•°
 Reader::Reader(Reader &reader)
 {
 	name = reader.name;
@@ -52,8 +52,8 @@ Reader::Reader(Reader &reader)
 }
 void Reader::readerInfoDisplay()
 {
-	cout << "\t" << setiosflags(ios_base::left) << "ÓÃ»§Ãû£º" << setw(15)<< name 
-		<< "ÁªÏµ·½Ê½£º" << setw(15) << phoneNumber << "ÒÑ½è" <<  borrowNumber << "±¾Êé" << "\n";
+	cout << "\t" << setiosflags(ios_base::left) << "ç”¨æˆ·åï¼š" << setw(15)<< name 
+		<< "è”ç³»æ–¹å¼ï¼š" << setw(15) << phoneNumber << "å·²å€Ÿ" <<  borrowNumber << "æœ¬ä¹¦" << "\n";
 	cout << "      ";
 	for ( int i = 0; i < 61; i++ )
 		cout << "-";

@@ -16,9 +16,9 @@ public:
 	ReaderData();
 	~ReaderData();
 	void saveReaders();
-	void seekBook();				//²éÑ¯Í¼ÊéÐÅÏ¢
-	void borrowBook(Reader *p);		//½èÊé
-	void returnBook(Reader *p);		//»¹Êé
+	void seekBook();				//æŸ¥è¯¢å›¾ä¹¦ä¿¡æ¯
+	void borrowBook(Reader *p);		//å€Ÿä¹¦
+	void returnBook(Reader *p);		//è¿˜ä¹¦
 };
 ReaderData::ReaderData()
 {
@@ -28,7 +28,7 @@ ReaderData::ReaderData()
 	rEnd = rHead->Next;
 	in.open("Reader.txt");
 	if ( !in )
-		cout << "ÐÂÏµÍ³ÎÞ¶ÁÕßÐÅÏ¢..." << endl;
+		cout << "æ–°ç³»ç»Ÿæ— è¯»è€…ä¿¡æ¯..." << endl;
 	else
 	{
 		while ( !in.eof() )
@@ -42,7 +42,7 @@ ReaderData::ReaderData()
 			rEnd->Next = new Reader;
 			rEnd = rEnd->Next;
 		}	
-	cout << "¶ÁÕßÐÅÏ¢¶ÁÈ¡³É¹¦£¡" << endl;
+	cout << "è¯»è€…ä¿¡æ¯è¯»å–æˆåŠŸï¼" << endl;
 	}
 }
 ReaderData::~ReaderData()
@@ -56,7 +56,7 @@ ReaderData::~ReaderData()
 	}
 	delete rHead,rEnd;
 }
-void ReaderData::saveReaders()		//±£´æ¶ÁÕßÐÅÏ¢
+void ReaderData::saveReaders()		//ä¿å­˜è¯»è€…ä¿¡æ¯
 {
 	ofstream out;
 	out.open("Reader.txt");
@@ -76,14 +76,14 @@ void ReaderData::borrowBook( Reader *pR )
 {
 	BookData booklist;
 	if ( pR->borrowNumber == MaxBor )
-		cout << "ÒÑ´ï×î´ó½èÊéÁ¿£¬Çë»¹ÊéºóÔÙ½è¡£°´»Ø³µ¼ü¼ÌÐø..." << endl;
+		cout << "å·²è¾¾æœ€å¤§å€Ÿä¹¦é‡ï¼Œè¯·è¿˜ä¹¦åŽå†å€Ÿã€‚æŒ‰å›žè½¦é”®ç»§ç»­..." << endl;
 	else 
 	{
 		int flag = 0;
-		cout << "ÇëÊäÈëËù½èÍ¼ÊéµÄÊéÃû»ò×÷Õß£º";
+		cout << "è¯·è¾“å…¥æ‰€å€Ÿå›¾ä¹¦çš„ä¹¦åæˆ–ä½œè€…ï¼š";
 		string str;
 		cin >> str;
-		cout << "²éÑ¯µ½µÄÊé¼®ÐÅÏ¢ÈçÏÂ£º" << endl;
+		cout << "æŸ¥è¯¢åˆ°çš„ä¹¦ç±ä¿¡æ¯å¦‚ä¸‹ï¼š" << endl;
 		for (Book *pB = booklist.bHead->Next; pB != booklist.bEnd; pB = pB->Next )
 		{
 			if ( pB->writer == str || pB->bookName == str )
@@ -97,7 +97,7 @@ void ReaderData::borrowBook( Reader *pR )
 		if ( flag )
 		{
 			flag = 1;
-			cout << "½èÊéÇëÊäÈë²éÑ¯µ½µÄÍ¼Êé±àºÅ£º";
+			cout << "å€Ÿä¹¦è¯·è¾“å…¥æŸ¥è¯¢åˆ°çš„å›¾ä¹¦ç¼–å·ï¼š";
 			cin >> str;
 			for (Book *pB = booklist.bHead->Next; pB != booklist.bEnd; pB = pB->Next )
 			{
@@ -105,7 +105,7 @@ void ReaderData::borrowBook( Reader *pR )
 				{
 					flag = 0;
 					if ( pB->currentInventory == 0)
-						cout << "µ±Ç°¿â´æÎªÁã£¬ÎÞ·¨½èÊé£¡°´»Ø³µ¼ü¼ÌÐø..." << endl;
+						cout << "å½“å‰åº“å­˜ä¸ºé›¶ï¼Œæ— æ³•å€Ÿä¹¦ï¼æŒ‰å›žè½¦é”®ç»§ç»­..." << endl;
 					else
 					{
 						pB->currentInventory --;
@@ -113,26 +113,26 @@ void ReaderData::borrowBook( Reader *pR )
 						pR->bookID[pR->borrowNumber] = pB->bookID;
 						pR->borrowNumber ++;
 						booklist.saveBooks();
-						cout << "½èÊé³É¹¦£¡" << endl;
+						cout << "å€Ÿä¹¦æˆåŠŸï¼" << endl;
 					}
 				}
 			}
 			if ( flag )
-				cout << "Í¼Êé±àºÅÊäÈë²»ÕýÈ·£¬½èÊéÎ´³É¹¦£¡°´»Ø³µ¼ü¼ÌÐø..." << endl;
+				cout << "å›¾ä¹¦ç¼–å·è¾“å…¥ä¸æ­£ç¡®ï¼Œå€Ÿä¹¦æœªæˆåŠŸï¼æŒ‰å›žè½¦é”®ç»§ç»­..." << endl;
 		}
 		else
-			cout << "Î´²éÑ¯µ½Ïà¹ØÐÅÏ¢£¬°´»Ø³µ¼ü¼ÌÐø..." << endl;
+			cout << "æœªæŸ¥è¯¢åˆ°ç›¸å…³ä¿¡æ¯ï¼ŒæŒ‰å›žè½¦é”®ç»§ç»­..." << endl;
 	}
 	cin.get();cin.get();
 	saveReaders();
 }
-//½èÊé
+//å€Ÿä¹¦
 void ReaderData::returnBook( Reader *pR)
 {
 	BookData booklist;
-	cout << "½èÊéÐÅÏ¢ÈçÏÂ£º" << endl;
+	cout << "å€Ÿä¹¦ä¿¡æ¯å¦‚ä¸‹ï¼š" << endl;
 	pR->readerInfoDisplay();
-	cout << "ÇëÊäÈëÒª»¹Í¼ÊéµÄ±àºÅ£º";
+	cout << "è¯·è¾“å…¥è¦è¿˜å›¾ä¹¦çš„ç¼–å·ï¼š";
 	string str;
 	cin >> str;
 	bool flag = 1;
@@ -149,11 +149,11 @@ void ReaderData::returnBook( Reader *pR)
 			pR->bookName[x] = pR->bookName[pR->borrowNumber - 1];
 			pR->borrowNumber --;
 			booklist.saveBooks();
-			cout << "»¹Êé³É¹¦£¡" << endl;
+			cout << "è¿˜ä¹¦æˆåŠŸï¼" << endl;
 		}
 	}
 	if ( flag )
-		cout << "±àºÅÊäÈë²»ÕýÈ·£¬»¹ÊéÎ´³É¹¦¡£" << endl;
+		cout << "ç¼–å·è¾“å…¥ä¸æ­£ç¡®ï¼Œè¿˜ä¹¦æœªæˆåŠŸã€‚" << endl;
 	saveReaders();
 	cin.get();cin.get();
 }

@@ -1,4 +1,4 @@
-//book_data.h		BookDataÀàµÄ¶¨Òå
+//book_data.h		BookDataç±»çš„å®šä¹‰
 #ifndef _BOOK_DATA_H_
 #define _BOOK_DATA_H_
 #include"book.h"
@@ -11,12 +11,12 @@ public:
 	Book *bHead, *bEnd;
 	BookData();
 	~BookData();
-	void seekBook();				//²éÕÒÒ»±¾Êé
-	void displayBooks();			//ÏÔÊ¾È«²¿Í¼ÊéĞÅÏ¢
-	void saveBooks();				//±£´æÈ«²¿Í¼ÊéĞÅÏ¢µ½ÎÄ¼ş
+	void seekBook();				//æŸ¥æ‰¾ä¸€æœ¬ä¹¦
+	void displayBooks();			//æ˜¾ç¤ºå…¨éƒ¨å›¾ä¹¦ä¿¡æ¯
+	void saveBooks();				//ä¿å­˜å…¨éƒ¨å›¾ä¹¦ä¿¡æ¯åˆ°æ–‡ä»¶
 };
 
-//¹¹Ôìº¯Êı
+//æ„é€ å‡½æ•°
 BookData::BookData()
 {
 	ifstream in;
@@ -31,10 +31,10 @@ BookData::BookData()
 		bEnd->Next = new Book;
 		bEnd = bEnd->Next;
 	}
-	cout << "Í¼ÊéĞÅÏ¢¶ÁÈ¡³É¹¦£¡"<<endl;
+	cout << "å›¾ä¹¦ä¿¡æ¯è¯»å–æˆåŠŸï¼"<<endl;
 	in.close();
 }
-//Îö¹¹º¯Êı
+//ææ„å‡½æ•°
 BookData::~BookData()
 {
 	saveBooks();
@@ -46,22 +46,22 @@ BookData::~BookData()
 	}
 	delete bHead,bEnd;
 }
-//²éÑ¯Êé¼®ĞÅÏ¢º¯Êı
+//æŸ¥è¯¢ä¹¦ç±ä¿¡æ¯å‡½æ•°
 void BookData::seekBook()		
 {
 	
 	string str;
 	Book* p = NULL;
 	int order, flag = 0;
-	cout << "\t\t1.°´ÊéÃû²éÕÒ\n\t\t2.°´×÷Õß²éÕÒ\n\t\t0.·µ»Ø" << endl;
-	cout << "\t\tÇëÊäÈëĞòºÅÑ¡Ôñ²éÑ¯·½Ê½£º";
+	cout << "\t\t1.æŒ‰ä¹¦åæŸ¥æ‰¾\n\t\t2.æŒ‰ä½œè€…æŸ¥æ‰¾\n\t\t0.è¿”å›" << endl;
+	cout << "\t\tè¯·è¾“å…¥åºå·é€‰æ‹©æŸ¥è¯¢æ–¹å¼ï¼š";
 	cin >> order;
 	switch ( order )
 	{
 	case 0: return;
 	case 1:
 		{
-			cout << "\t\tÇëÊäÈëËùÒª²éÑ¯µÄÊé¼®µÄÊéÃû£º";
+			cout << "\t\tè¯·è¾“å…¥æ‰€è¦æŸ¥è¯¢çš„ä¹¦ç±çš„ä¹¦åï¼š";
 			cin >> str;
 			cout << endl;
 			for ( p = bHead->Next; p != bEnd; p = p->Next )
@@ -77,7 +77,7 @@ void BookData::seekBook()
 		} break;
 	case 2:
 		{
-			cout << "\t\tÇëÊäÈëËùÒª²éÑ¯µÄ×÷Õß£º";
+			cout << "\t\tè¯·è¾“å…¥æ‰€è¦æŸ¥è¯¢çš„ä½œè€…ï¼š";
 			cin >> str;
 			cout << endl;
 			for ( p = bHead->Next; p != bEnd; p = p->Next )
@@ -94,19 +94,19 @@ void BookData::seekBook()
 	default: return;
 	}
 	if ( flag )
-		cout << "²éÑ¯Íê±Ï£¬°´»Ø³µ¼ü¼ÌĞø..." << endl;
+		cout << "æŸ¥è¯¢å®Œæ¯•ï¼ŒæŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 	else 
-		cout << "Î´²éÑ¯µ½ĞÅÏ¢£¬°´»Ø³µ¼ü¼ÌĞø..." << endl;
+		cout << "æœªæŸ¥è¯¢åˆ°ä¿¡æ¯ï¼ŒæŒ‰å›è½¦é”®ç»§ç»­..." << endl;
 	cin.get();cin.get();
 }
 
-void BookData::displayBooks()	//ÏÔÊ¾È«²¿Í¼ÊéĞÅÏ¢
+void BookData::displayBooks()	//æ˜¾ç¤ºå…¨éƒ¨å›¾ä¹¦ä¿¡æ¯
 {
 	cout << endl;
 	int i = 0;
 	for ( Book *p = bHead->Next; p != bEnd; p = p->Next )
 		i++;
-	cout << "µ±Ç°¹²ÓĞÍ¼Êé" << i << "ÖÖ" << endl;
+	cout << "å½“å‰å…±æœ‰å›¾ä¹¦" << i << "ç§" << endl;
 	i = 0;
 	for ( Book *p = bHead->Next; p != bEnd; p = p->Next )
 	{
@@ -118,7 +118,7 @@ void BookData::displayBooks()	//ÏÔÊ¾È«²¿Í¼ÊéĞÅÏ¢
 	cin.get();cin.get();
 }
 
-void BookData::saveBooks()		//±£´æÈ«²¿Í¼ÊéĞÅÏ¢µ½ÎÄ¼ş
+void BookData::saveBooks()		//ä¿å­˜å…¨éƒ¨å›¾ä¹¦ä¿¡æ¯åˆ°æ–‡ä»¶
 {
 	int i = 0;
 	ofstream out;
